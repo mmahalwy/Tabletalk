@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row mt-5">
+    <%= render 'shared/settings' %>
+    <div class="col-md-6 text-left">
+      <p>We use this information to try and pick convenient times and locations for your meetings.</p>
+      <%= simple_form_for(current_user, url: registration_path(:user), html: { class: 'row' }, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes}) do |f| %>
+        <% @timeslots.each do |day, values| %>
+            <div class="col-md-6">
+            <div class="lead mb-3">
+              <strong><%= day %></strong>
+            </div>
+            <%= f.association :timeslots, as: :check_boxes, collection: values, label: false, label_method: :time_of_day, include_blank: false %>
+          </div>
+        <% end %>
+        <div class="col-md-12">
+          <%= f.submit 'Update', class: 'btn btn-primary btn-block' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

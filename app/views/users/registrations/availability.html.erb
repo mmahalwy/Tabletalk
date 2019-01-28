@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row mt-5">
+    <%= render 'settings/shared' %>
+    <div class="col-md-6 text-left">
+      <%= simple_form_for(current_user, url: registration_path(:user), html: { class: 'row' }) do |f| %>
+        <% @timeslots.each do |day, values| %>
+            <div class="col-md-6">
+            <div class="lead">
+              <%= day %>
+            </div>
+            <%= f.simple_fields_for :timeslots, values.sort_by { |slot| slot[:time_of_day].to_i } do |ff, something| %>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= ff.input_field :selected %>
+                  <%= ff.object.time_of_day %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="col-md-12">
+          <%= f.submit 'Update', class: 'btn btn-primary btn-block' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

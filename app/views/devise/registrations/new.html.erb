@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h4>
+        <small>Sign up</small>
+      </h4>
+      <p>For the best results:</p>
+      <%= link_to user_linkedin_omniauth_authorize_path, class: 'btn btn-primary btn-block btn-linkedin' do %>
+      <i class="fa fa-linkedin"></i> Connect with LinkedIn
+      <% end %>
+      <hr>
+      <p>Or you can sign up with your Email</p>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :email, placeholder: 'johndoe@coffee.com', required: true, autofocus: true %>
+        <%= f.input :first_name, placeholder: 'John', required: true %>
+        <%= f.input :last_name, placeholder: 'Doe', required: true %>
+        <%= f.input :title, placeholder: 'Software Engineer', required: true %>
+        <%= f.input :profile, label: 'Linkedin Url', placeholder: 'https://www.linkedin.com/in/mmahalwy', required: true %>
+        <%= f.association :city, required: true %>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for:
+          <%= resource.unconfirmed_email %>
+        </p>
+        <% end %>
+
+        <%#= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+        <%#= f.input :password_confirmation, required: false %>
+        <%#= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
+        <%= render "devise/shared/links" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="masthead clearfix">
+      <div class="container">
+        <div class="inner" style="padding: 2rem 1.5rem">
+          <h3 class="masthead-brand">Two and Coffee</h3>
+          <nav class="nav nav-masthead">
+            <% if user_signed_in? %>
+              <%= link_to 'Profile', edit_user_registration_path, class: "nav-link" %>
+            <% else %>
+              <%= link_to 'Signup', sign_up_path, class: "nav-link" %>
+              <%= link_to 'Signin', sign_in_path, class: "nav-link" %>
+            <% end %>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center home-container">
+      <div class="inner cover">
+        <h1 class="mb-4">Meet business professionals, every week.</h1>
+        <h4 class="font-weight-light mb-4">
+          Sign up, put your preferred times and we will connect you <br>with a business professionals over coffee. <br> Every week.
+        </h4>
+        <p class="lead">
+          <%= link_to user_linkedin_omniauth_authorize_path, class: 'btn btn-primary btn-lg btn-linkedin' do %>
+            <i class="fa fa-linkedin"></i> Connect with LinkedIn
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h2 class="text-center">FAQ</h2>
+      <dl>
+        <dt>Why was this made?</dt>
+        <dd>
+          We really enjoyed using Weave.in during it's time and met a couple of great folks.
+          We want to bring back the joy of meeting like-minded individuals every week.
+        </dd>
+        <dt>Who is this for?</dt>
+        <dd>
+          If you're looking to meet and connect with new people, this is for you.
+          Whether that's for hiring, to meet a cofounder, to help others or expand your network, this is
+          made for that.
+        </dd>
+        <dt>How does this work?</dt>
+        <dd>
+          At the start of the week, you will receive an Email asking you to confirm meetings for that week.
+          Later on, we will match and send introductions to other individuals in the community to your inbox - look out for them!
+        </dd>
+        <dt>Why do I need to be approved?</dt>
+        <dd>
+          We can't be everywhere at all times!
+          We want to make sure there is enough users in each city before launching and matching people.
+          Lastly, we want to make sure everyone is serious and committed to the community.
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
