@@ -1,25 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h4><small>Meetings</small></h4>
+      <% if @meetings.empty? %>
+        <p>There are no meetings for you yet. Until next week!</p>
+      <% end %>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<h1>Meetings</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @meetings.each do |meeting| %>
-      <tr>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Meeting', new_meeting_path %>
+        <tbody>
+          <% @meetings.each do |meeting| %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@
     <%= render 'shared/settings' %>
     <div class="col-md-6 text-left">
       <p>We use this information to try and pick convenient times and locations for your meetings.</p>
-      <%= simple_form_for(current_user, url: registration_path(:user), html: { class: 'row' }, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes}) do |f| %>
+      <%= simple_form_for(current_user, url: registration_path(:user), html: { class: 'row' }) do |f| %>
         <% @timeslots.each do |day, values| %>
             <div class="col-md-6">
             <div class="lead mb-3">

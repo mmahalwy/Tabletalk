@@ -54,4 +54,4 @@ if Rails.env.development?
   end
 end
 
-User.create!(email: 'mmahalwy@gmail.com', password: 'password', role: :admin, approved: true, city: city)
+User.create!(email: 'mmahalwy+1@gmail.com', password: 'password', role: :admin, approved: true, city: city)

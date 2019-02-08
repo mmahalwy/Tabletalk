@@ -42,8 +42,10 @@ gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 gem 'paper_trail'
 gem 'cancancan', '~> 2.0'
-gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-linkedin'
 gem 'resque'
+gem 'activerecord-session_store'
+gem 'sentry-raven'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

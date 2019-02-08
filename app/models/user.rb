@@ -49,7 +49,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:linkedin]
 
-  belongs_to :city
+  belongs_to :city, optional: true
   has_many :availabilities
   has_many :timeslots, through: :availabilities
   has_many :confirmations
@@ -106,7 +106,7 @@ class User < ApplicationRecord
       user.title = auth.info.description
       user.profile = auth.info.urls.public_profile
       user.location = auth.info.location
-      user.location_name = auth.info.location.name
+      user.location_name = auth.info.location
       user.token = auth.credentials.token
       user.expires_at = auth.credentials.expires_at
       # uncomment the line below to skip the confirmation emails.

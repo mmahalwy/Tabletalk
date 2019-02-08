@@ -1,20 +1,23 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h4><small>Sign in</small></h4>
+      <%= link_to user_linkedin_omniauth_authorize_path, class: 'btn btn-primary btn-block btn-linkedin' do %>
+        <i class="fab fa-linkedin"></i> Sign in with LinkedIn
+      <% end %>
+      <hr>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, required: false, autofocus: true %>
+          <%= f.input :password, required: false %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <div class="form-actions">
+          <%= f.button :submit, 'Sign in', class: 'btn btn-primary' %>
+          <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
