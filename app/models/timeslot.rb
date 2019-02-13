@@ -25,4 +25,8 @@ class Timeslot < ApplicationRecord
   def text
     "#{day_of_week} #{time_of_day}"
   end
+
+  def day_of_week_symbol
+    day_of_week.downcase.to_sym
+  end
 end

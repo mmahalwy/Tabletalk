@@ -1,5 +1,22 @@
-<h1>Meetings#matched</h1>
-
+<p>Hey
+  <%= @meeting.users.pluck(:first_name).join(' and ') %>!</p>
 <p>
-  <%= @greeting %>, find me in app/views/meetings_mailer/matched.html.erb
+  Hope you're having a great week! You two have been matched for a meeting this
+  <strong>
+    <%= @meeting.timeslot.day_of_week %> at
+    <%= @meeting.timeslot.time_of_day %>
+  </strong>. I'll let you two decide on where is best to meet.
+</p>
+<p>
+  Below are the LinkedIn profiles of you two to help you learn a little more about each other before hand.
+  <% @meeting.users.each do |user| %>
+  <br>
+  <%= user.first_name %> -
+  <a href="<%= user.profile %>">
+    <%= user.profile %>
+  </a>
+  <% end %>
+</p>
+<p>
+  Please be on time to the meeting, and don't hesitate to let us know if you need any help in the meantime.
 </p>

@@ -4,14 +4,14 @@
       <div class="container">
         <div class="inner" style="padding: 2rem 1.5rem">
           <h3 class="masthead-brand">
-            <%= brand_name %>
+            <%= site_brand_name %>
           </h3>
           <nav class="nav nav-masthead">
             <% if user_signed_in? %>
-            <%= link_to 'Profile', edit_user_registration_path, class: "nav-link" %>
+              <%= link_to 'Profile', edit_user_registration_path, class: "nav-link" %>
             <% else %>
-            <%= link_to 'Signup', sign_up_path, class: "nav-link" %>
-            <%= link_to 'Signin', sign_in_path, class: "nav-link" %>
+              <%= link_to 'Signup', sign_up_path, class: "nav-link" %>
+              <%= link_to 'Signin', sign_in_path, class: "nav-link" %>
             <% end %>
           </nav>
         </div>
@@ -25,7 +25,7 @@
         </h4>
         <p class="lead">
           <%= link_to user_linkedin_omniauth_authorize_path, class: 'btn btn-primary btn-lg btn-linkedin' do %>
-          <i class="fab fa-linkedin"></i> Connect with LinkedIn
+            <i class="fab fa-linkedin"></i> Connect with LinkedIn
           <% end %>
         </p>
       </div>
@@ -37,16 +37,16 @@
     <div class="col-8 offset-2 text-center">
       <h2 class="mb-5">How it works</h2>
       <div class="row">
-        <div class="col-4">
-          <i class="far fa-5x mb-3 fa-calendar-alt"></i>
+        <div class="col-md-4">
+          <h2 style="font-size: 70px">1</h2>
           <p>Choose times that work for you to meet</p>
         </div>
-        <div class="col-4">
-          <i class="far fa-5x mb-3 fa-envelope"></i>
+        <div class="col-md-4">
+          <h2 style="font-size: 70px">2</h2>
           <p>Receive an email every week to confirm your availablity</p>
         </div>
-        <div class="col-4">
-          <i class="far fa-5x mb-3 fa-comments"></i>
+        <div class="col-md-4">
+          <h2 style="font-size: 70px">3</h2>
           <p>Meet new people! You'll get paired with someone new</p>
         </div>
       </div>
@@ -58,37 +58,37 @@
     <div class="col-8 offset-2">
       <h2 class="text-center">FAQ</h2>
       <dl>
-        <dt>Why was this made?</dt>
+        <dt class="mt-4 font-weight-bold">Why was this made?</dt>
         <dd>
           We really enjoyed using Weave.in during it's time and met a couple of great folks.
           We want to bring back the joy of meeting like-minded individuals every week.
         </dd>
-        <dt>Who is this for?</dt>
+        <dt class="mt-4 font-weight-bold">Who is this for?</dt>
         <dd>
           If you're looking to meet and connect with new people, this is for you.
           Whether that's for hiring, to meet a cofounder, to help others or expand your network, this is
           made for that.
         </dd>
-        <dt>How does this work?</dt>
+        <dt class="mt-4 font-weight-bold">How does this work?</dt>
         <dd>
           At the start of the week, you will receive an Email asking you to confirm meetings for that week.
           Later on, we will match and send introductions to other individuals in the community to your inbox - look out
           for them!
         </dd>
-        <dt>Where do we meet?</dt>
+        <dt class="mt-4 font-weight-bold">Where do we meet?</dt>
         <dd>
           To begin with, this will be an ad hoc basis. We will let you and the other person decide where you'd like to
           meet.
           What we will help with is coordinating the time between the attendees.
         </dd>
-        <dt>How many people will be in the meeting?</dt>
+        <dt class="mt-4 font-weight-bold">How many people will be in the meeting?</dt>
         <dd>
           We will experiment with 2-3 folks. It's not great if someone cancels last minute, especially if you made time
           to
           do coffee - 3 people would help as a fail safe. Lastly, there is more to learn about people when there are
           two others.
         </dd>
-        <dt>Why do I need to be approved?</dt>
+        <dt class="mt-4 font-weight-bold">Why do I need to be approved?</dt>
         <dd>
           We can't be everywhere at all times!
           We want to make sure there is enough users in each city before launching and matching people.

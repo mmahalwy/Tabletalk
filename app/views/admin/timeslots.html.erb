@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Day of timeslot</th>
+            <th>Time of day</th>
+            <th>Enabled</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @timeslots.each do |timeslot| %>
+            <tr>
+              <td>
+                <%= timeslot.id %>
+              </td>
+              <td>
+                <%= timeslot.day_of_week %>
+              </td>
+              <td>
+                <%= timeslot.time_of_day %>
+              </td>
+              <td>
+                <%= timeslot.enabled %>
+              </td>
+              <td>
+                <%= link_to 'Link', admin_timeslot_path(id: timeslot.id) %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

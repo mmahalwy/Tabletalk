@@ -18,7 +18,7 @@
         <%= f.input :first_name, placeholder: 'John', required: true %>
         <%= f.input :last_name, placeholder: 'Doe', required: true %>
         <%= f.input :title, placeholder: 'Software Engineer', required: true %>
-        <%= f.input :profile, label: 'Linkedin Url', placeholder: 'https://www.linkedin.com/in/mmahalwy', required: true %>
+        <%= f.input :profile_url, label: 'Linkedin Url', placeholder: 'https://www.linkedin.com/in/mmahalwy', required: true %>
         <%= f.association :city, required: true %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

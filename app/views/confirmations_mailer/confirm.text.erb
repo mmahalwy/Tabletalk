@@ -1,3 +1,11 @@
-Confirmations#confirm
+Hey <%= @user.first_name %>,
 
-<%= @greeting %>, find me in app/views/confirmations_mailer/confirm.text.erb
+Another week of meetings! Your preferences indicate that you'd like
+<%= @user.timeslots.count %> meeting(s):
+  <% @user.timeslots.each do |timeslot| %>
+    <%= timeslot.day_of_week %> at <%= timeslot.time_of_day %>
+  <% end %>
+
+Do all these timeslots work for you this week?
+<%= link_to "Yes I'd like to have a meeting this week.", confirm_confirmations_url(token: @user.email_token, week_id: @week.id) %>
+<%= link_to "No! Change my settings!", availabilities_url %>

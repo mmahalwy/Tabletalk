@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= button_to  "Create week", admin_create_week_and_send_confirmations_path, class: 'btn btn-primary my-3' %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Date from</th>
+              <th>Date to</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @weeks.each do |week| %>
+              <tr>
+                <td>
+                  <%= week.id %>
+                </td>
+                <td>
+                  <%= week.date_from %>
+                </td>
+                <td>
+                  <%= week.date_to %>
+                </td>
+                <td>
+                  <%= link_to 'Link', admin_week_path(id: week.id) %>
+                </td>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>

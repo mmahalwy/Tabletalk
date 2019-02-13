@@ -20,7 +20,7 @@
 #  last_sign_in_ip        :inet
 #  location               :json             not null
 #  location_name          :string           default(""), not null
-#  profile                :string           default(""), not null
+#  profile_url            :string           default(""), not null
 #  provider               :string           default(""), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -70,6 +70,7 @@ class User < ApplicationRecord
 
   def met_before?(user2)
     return false unless meetings.exists?
+
     meetings.where(id: user2.meetings).exists?
   end
 
@@ -89,6 +90,10 @@ class User < ApplicationRecord
     meetings.exists?(week: week)
   end
 
+  def full_name
+    first_name + " " + last_name
+  end
+
   def self.send_confirmation_emails(week)
     approved.each do |user|
       user.generate_email_token
@@ -104,7 +109,7 @@ class User < ApplicationRecord
       user.last_name = auth.info.last_name
       user.image = auth.info.image
       user.title = auth.info.description
-      user.profile = auth.info.urls.public_profile
+      user.profile_url = auth.info.urls.public_profile
       user.location = auth.info.location
       user.location_name = auth.info.location
       user.token = auth.credentials.token

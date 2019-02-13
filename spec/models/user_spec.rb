@@ -20,7 +20,7 @@
 #  last_sign_in_ip        :inet
 #  location               :json             not null
 #  location_name          :string           default(""), not null
-#  profile                :string           default(""), not null
+#  profile_url            :string           default(""), not null
 #  provider               :string           default(""), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime

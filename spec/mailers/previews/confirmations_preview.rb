@@ -3,7 +3,7 @@ class ConfirmationsPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/confirmations/confirm
   def confirm
-    ConfirmationsMailer.confirm
+    ConfirmationsMailer.confirm(User.first, Week.first)
   end
 
 end

@@ -43,4 +43,8 @@ class Meeting < ApplicationRecord
   def send_reminder_email
     MeetingsMailer.reminder(self).deliver_later
   end
+
+  def date
+    week.date_from.next_occurring(timeslot.day_of_week_symbol)
+  end
 end

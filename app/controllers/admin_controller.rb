@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+  before_action :authenticate_user!
+  before_action :is_admin?
   before_action :set_user, only: [:approve]
   before_action :set_week, only: %i[week meetings]
 
@@ -11,11 +13,11 @@ class AdminController < ApplicationController
   end
 
   def timeslots
-    @timeslots = Timeslot.all
+    @timeslots = Timeslot.unscoped.all
   end
 
   def timeslot
-    @timeslot = Timeslot.find(params[:id])
+    @timeslot = Timeslot.unscoped.find(params[:id])
   end
 
   def week; end
@@ -49,6 +51,13 @@ class AdminController < ApplicationController
   end
 
   def set_week
-    @week = Week.includes([{ users: :timeslots }, { confirmations: { user: :timeslots }}]).find(params[:id])
+    @week = Week.includes([
+      :user_meetings,
+      { confirmations: { user: [:timeslots, :city] } }
+    ]).find(params[:id])
+  end
+
+  def is_admin?
+    @current_user.admin? || Rails.env.development?
   end
 end

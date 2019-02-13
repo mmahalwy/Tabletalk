@@ -41,7 +41,7 @@ if Rails.env.development?
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
       title: Faker::Job.title,
-      profile: Faker::Avatar.image,
+      profile_url: Faker::Avatar.image,
       approved: true,
       city: city
     )

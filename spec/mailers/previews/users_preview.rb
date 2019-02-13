@@ -3,7 +3,7 @@ class UsersPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/users/approved
   def approved
-    UsersMailer.approved
+    UsersMailer.approved(User.first)
   end
 
 end

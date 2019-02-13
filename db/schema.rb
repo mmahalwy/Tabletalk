@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_08_082430) do
+ActiveRecord::Schema.define(version: 2019_02_12_042449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,21 @@ ActiveRecord::Schema.define(version: 2019_02_08_082430) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_confirmations_on_user_id"
     t.index ["week_id"], name: "index_confirmations_on_week_id"
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -105,7 +120,7 @@ ActiveRecord::Schema.define(version: 2019_02_08_082430) do
     t.string "image", default: "", null: false
     t.string "title", default: "", null: false
     t.json "location", default: "", null: false
-    t.string "profile", default: "", null: false
+    t.string "profile_url", default: "", null: false
     t.string "location_name", default: "", null: false
     t.string "email_token", default: "", null: false
     t.string "token"

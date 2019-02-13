@@ -1,0 +1,57 @@
+<% attributes = [
+  :id,
+  :email,
+  :first_name,
+  :last_name,
+  :description,
+  :location_name,
+  :email_token,
+  :expires_at,
+  :sign_in_count,
+  :created_at,
+  :role
+]%>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= @users.count %> users signed up!
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Profile</th>
+          <% attributes.each do |attr| %>
+          <th>
+            <%= attr %>
+          </th>
+          <% end %>
+          <th>City</th>
+          <th>Approve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= image_tag(user.image, size: '35x35') %>
+          </td>
+          <td>
+            <%= link_to 'Profile', user.profile_url %>
+          </td>
+          <% attributes.each do |attr| %>
+          <td>
+            <%= user[attr] %>
+          </td>
+          <% end %>
+          <td>
+            <%= user.city.try(:name) %>
+          </td>
+          <td>
+            <%= user.approved? ? 'Approved' : link_to('Approve', admin_approve_user_path(id: user.id), method: :post) %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,5 +1,12 @@
-<h1>Meetings#reminder</h1>
-
+<p>Hey
+  <%= @meeting.users.pluck(:first_name).join(' and ') %>!</p>
 <p>
-  <%= @greeting %>, find me in app/views/meetings_mailer/reminder.html.erb
+  Hope you're having a great week! Just wanted to send out a friendly reminder about your upcoming meeting this
+  <strong>
+    <%= @meeting.timeslot.day_of_week %> at
+    <%= @meeting.timeslot.time_of_day %>
+  </strong>.
+</p>
+<p>
+  If you need to cancel, no problem, just let the other person know!
 </p>

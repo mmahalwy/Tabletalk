@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  get 'admin/users'
-  get 'admin/weeks', to: 'admin#weeks', as: 'admin_weeks'
-  get 'admin/weeks/:id', to: 'admin#week', as: 'admin_week'
-  get 'admin/timeslots', to: 'admin#timeslots', as: 'admin_timeslots'
-  get 'admin/timeslots/:id', to: 'admin#timeslot', as: 'admin_timeslot'
-  get 'admin/weeks/:id/meetings', to: 'admin#meetings', as: 'admin_week_meetings'
-  post 'admin/users/:id/approve', to: 'admin#approve', as: 'admin_approve_user'
-  post 'admin/weeks/create_week_and_send_confirmations', to: 'admin#create_week_and_send_confirmations', as: 'admin_create_week_and_send_confirmations'
-  post 'admin/create_meetings', to: 'admin#create_meetings', as: 'admin_create_meetings'
+  scope :admin do
+    get '/users', to: 'admin#weeks'
+    get '/weeks', to: 'admin#weeks', as: 'admin_weeks'
+    get '/weeks/:id', to: 'admin#week', as: 'admin_week'
+    get '/timeslots', to: 'admin#timeslots', as: 'admin_timeslots'
+    get '/timeslots/:id', to: 'admin#timeslot', as: 'admin_timeslot'
+    get '/weeks/:id/meetings', to: 'admin#meetings', as: 'admin_week_meetings'
+    post '/users/:id/approve', to: 'admin#approve', as: 'admin_approve_user'
+    post '/weeks/create_week_and_send_confirmations', to: 'admin#create_week_and_send_confirmations', as: 'admin_create_week_and_send_confirmations'
+    post '/create_meetings', to: 'admin#create_meetings', as: 'admin_create_meetings'
+  end
 
   get 'pages/home'
   get 'welcome', to: 'welcome#index'
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
 
   resources :availabilities
   resources :meetings, only: [:index]
+  resources :users, only: [:show]
   resources :confirmations, only: [:show] do
     collection do
       get :confirm

@@ -13,7 +13,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :image,                        null: false, default: ''
       t.string :title,                        null: false, default: ''
       t.json   :location,                     null: false, default: ''
-      t.string :profile,                      null: false, default: ''
+      t.string :profile_url,                  null: false, default: ''
       t.string :location_name,                null: false, default: ''
       t.string :email_token,                  null: false, default: ''
       t.string :token
