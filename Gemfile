@@ -57,6 +57,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails' # http://betterspecs.org/
   gem 'rubocop'
+  gem 'rubocop-airbnb'
   gem 'zeus'
   gem 'faker'
   gem 'factory_bot_rails'

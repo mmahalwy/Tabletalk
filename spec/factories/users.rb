@@ -49,7 +49,7 @@ FactoryBot.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     description1 { Faker::Job.title }
-    profile { Faker::Avatar.image }
+    profile_url { Faker::Avatar.image }
     approved { true }
   end
 end

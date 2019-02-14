@@ -17,8 +17,8 @@
 FactoryBot.define do
   factory :week do
     id { 1 }
-    date_from { Date.today }
-    date_to { Date.today + 1.week }
+    date_from { Date.today.next_occurring(:sunday) }
+    date_to { (Date.today + 1.week).next_occurring(:sunday) }
     created_at { "2019-01-27 18:02:34" }
     updated_at { "2019-01-27 18:02:34" }
   end

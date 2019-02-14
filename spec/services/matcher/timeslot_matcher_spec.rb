@@ -18,12 +18,12 @@ RSpec.describe Matcher::TimeslotMatcher do
   let(:friday_2pm) { create(:timeslot, day_of_week: 'Friday', time_of_day: '2 pm', enabled: true) }
 
   describe "when all match" do
+    subject { described_class.new(week, friday_8am.availabilities) }
+
     let!(:availabity1) { create(:availability, user: user1, timeslot: friday_8am) }
     let!(:availabity2) { create(:availability, user: user2, timeslot: friday_8am) }
     let!(:availabity3) { create(:availability, user: user3, timeslot: friday_8am) }
     let!(:availabity4) { create(:availability, user: user4, timeslot: friday_8am) }
-
-    subject { described_class.new(week, friday_8am.availabilities) }
 
     describe "#perform" do
       it "returns meetings" do
@@ -35,11 +35,11 @@ RSpec.describe Matcher::TimeslotMatcher do
   end
 
   describe "when some match" do
+    subject { described_class.new(week, friday_9am.availabilities) }
+
     let!(:availabity1) { create(:availability, user: user1, timeslot: friday_9am) }
     let!(:availabity2) { create(:availability, user: user2, timeslot: friday_9am) }
     let!(:availabity3) { create(:availability, user: user3, timeslot: friday_9am) }
-
-    subject { described_class.new(week, friday_9am.availabilities) }
 
     describe "#perform" do
       it "returns meetings" do
@@ -50,10 +50,28 @@ RSpec.describe Matcher::TimeslotMatcher do
     end
   end
 
-  describe "when none match" do
-    let!(:availabity1) { create(:availability, user: user1, timeslot: friday_9am) }
-
+  describe "a user has multiple availabilities" do
     subject { described_class.new(week, friday_9am.availabilities) }
+
+    let!(:availabity1) { create(:availability, user: user1, timeslot: friday_8am) }
+    let!(:availabity2) { create(:availability, user: user2, timeslot: friday_9am) }
+    let!(:availabity3) { create(:availability, user: user3, timeslot: friday_9am) }
+    let!(:availabity4) { create(:availability, user: user4, timeslot: friday_9am) }
+    let!(:availabity5) { create(:availability, user: user1, timeslot: friday_9am) }
+
+    describe "#perform" do
+      it "returns meetings" do
+        subject.perform
+
+        expect(Meeting.count).to eql(2)
+      end
+    end
+  end
+
+  describe "when none match" do
+    subject { described_class.new(week, friday_9am.availabilities) }
+
+    let!(:availabity1) { create(:availability, user: user1, timeslot: friday_9am) }
 
     describe "#perform" do
       it "returns meetings" do
