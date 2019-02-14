@@ -18,7 +18,6 @@ RSpec.describe AvailabilitiesController, type: :routing do
       expect(:get => "/availabilities/1/edit").to route_to("availabilities#edit", :id => "1")
     end
 
-
     it "routes to #create" do
       expect(:post => "/availabilities").to route_to("availabilities#create")
     end

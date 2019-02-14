@@ -24,7 +24,6 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe MeetingsController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # Meeting. As you add validations to Meeting, be sure to
   # adjust the attributes here as well.
@@ -52,7 +51,7 @@ RSpec.describe MeetingsController, type: :controller do
   describe "GET #show" do
     it "returns a success response" do
       meeting = Meeting.create! valid_attributes
-      get :show, params: {id: meeting.to_param}, session: valid_session
+      get :show, params: { id: meeting.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -67,7 +66,7 @@ RSpec.describe MeetingsController, type: :controller do
   describe "GET #edit" do
     it "returns a success response" do
       meeting = Meeting.create! valid_attributes
-      get :edit, params: {id: meeting.to_param}, session: valid_session
+      get :edit, params: { id: meeting.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -76,19 +75,19 @@ RSpec.describe MeetingsController, type: :controller do
     context "with valid params" do
       it "creates a new Meeting" do
         expect {
-          post :create, params: {meeting: valid_attributes}, session: valid_session
+          post :create, params: { meeting: valid_attributes }, session: valid_session
         }.to change(Meeting, :count).by(1)
       end
 
       it "redirects to the created meeting" do
-        post :create, params: {meeting: valid_attributes}, session: valid_session
+        post :create, params: { meeting: valid_attributes }, session: valid_session
         expect(response).to redirect_to(Meeting.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {meeting: invalid_attributes}, session: valid_session
+        post :create, params: { meeting: invalid_attributes }, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -102,14 +101,14 @@ RSpec.describe MeetingsController, type: :controller do
 
       it "updates the requested meeting" do
         meeting = Meeting.create! valid_attributes
-        put :update, params: {id: meeting.to_param, meeting: new_attributes}, session: valid_session
+        put :update, params: { id: meeting.to_param, meeting: new_attributes }, session: valid_session
         meeting.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the meeting" do
         meeting = Meeting.create! valid_attributes
-        put :update, params: {id: meeting.to_param, meeting: valid_attributes}, session: valid_session
+        put :update, params: { id: meeting.to_param, meeting: valid_attributes }, session: valid_session
         expect(response).to redirect_to(meeting)
       end
     end
@@ -117,7 +116,7 @@ RSpec.describe MeetingsController, type: :controller do
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
         meeting = Meeting.create! valid_attributes
-        put :update, params: {id: meeting.to_param, meeting: invalid_attributes}, session: valid_session
+        put :update, params: { id: meeting.to_param, meeting: invalid_attributes }, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -127,15 +126,14 @@ RSpec.describe MeetingsController, type: :controller do
     it "destroys the requested meeting" do
       meeting = Meeting.create! valid_attributes
       expect {
-        delete :destroy, params: {id: meeting.to_param}, session: valid_session
+        delete :destroy, params: { id: meeting.to_param }, session: valid_session
       }.to change(Meeting, :count).by(-1)
     end
 
     it "redirects to the meetings list" do
       meeting = Meeting.create! valid_attributes
-      delete :destroy, params: {id: meeting.to_param}, session: valid_session
+      delete :destroy, params: { id: meeting.to_param }, session: valid_session
       expect(response).to redirect_to(meetings_url)
     end
   end
-
 end

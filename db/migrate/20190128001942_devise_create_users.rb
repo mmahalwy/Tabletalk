@@ -18,9 +18,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :email_token,                  null: false, default: ''
       t.string :token
       t.integer :expires_at
-      t.boolean :approved,                    null: false, default: false
+      t.boolean :approved, null: false, default: false
       t.integer :city_id
-      t.integer :role,                        null: false, default: 0
+      t.integer :role, null: false, default: 0
       # What are you working on
       t.text :description1, null: false, default: ''
       # What have you done
@@ -52,7 +52,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
 
       t.timestamps null: false
     end

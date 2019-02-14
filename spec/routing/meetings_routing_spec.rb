@@ -18,7 +18,6 @@ RSpec.describe MeetingsController, type: :routing do
       expect(:get => "/meetings/1/edit").to route_to("meetings#edit", :id => "1")
     end
 
-
     it "routes to #create" do
       expect(:post => "/meetings").to route_to("meetings#create")
     end

@@ -24,7 +24,6 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe AvailabilitiesController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # Availability. As you add validations to Availability, be sure to
   # adjust the attributes here as well.
@@ -52,7 +51,7 @@ RSpec.describe AvailabilitiesController, type: :controller do
   describe "GET #show" do
     it "returns a success response" do
       availability = Availability.create! valid_attributes
-      get :show, params: {id: availability.to_param}, session: valid_session
+      get :show, params: { id: availability.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -67,7 +66,7 @@ RSpec.describe AvailabilitiesController, type: :controller do
   describe "GET #edit" do
     it "returns a success response" do
       availability = Availability.create! valid_attributes
-      get :edit, params: {id: availability.to_param}, session: valid_session
+      get :edit, params: { id: availability.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -76,19 +75,19 @@ RSpec.describe AvailabilitiesController, type: :controller do
     context "with valid params" do
       it "creates a new Availability" do
         expect {
-          post :create, params: {availability: valid_attributes}, session: valid_session
+          post :create, params: { availability: valid_attributes }, session: valid_session
         }.to change(Availability, :count).by(1)
       end
 
       it "redirects to the created availability" do
-        post :create, params: {availability: valid_attributes}, session: valid_session
+        post :create, params: { availability: valid_attributes }, session: valid_session
         expect(response).to redirect_to(Availability.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {availability: invalid_attributes}, session: valid_session
+        post :create, params: { availability: invalid_attributes }, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -102,14 +101,14 @@ RSpec.describe AvailabilitiesController, type: :controller do
 
       it "updates the requested availability" do
         availability = Availability.create! valid_attributes
-        put :update, params: {id: availability.to_param, availability: new_attributes}, session: valid_session
+        put :update, params: { id: availability.to_param, availability: new_attributes }, session: valid_session
         availability.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the availability" do
         availability = Availability.create! valid_attributes
-        put :update, params: {id: availability.to_param, availability: valid_attributes}, session: valid_session
+        put :update, params: { id: availability.to_param, availability: valid_attributes }, session: valid_session
         expect(response).to redirect_to(availability)
       end
     end
@@ -117,7 +116,7 @@ RSpec.describe AvailabilitiesController, type: :controller do
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
         availability = Availability.create! valid_attributes
-        put :update, params: {id: availability.to_param, availability: invalid_attributes}, session: valid_session
+        put :update, params: { id: availability.to_param, availability: invalid_attributes }, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -127,15 +126,14 @@ RSpec.describe AvailabilitiesController, type: :controller do
     it "destroys the requested availability" do
       availability = Availability.create! valid_attributes
       expect {
-        delete :destroy, params: {id: availability.to_param}, session: valid_session
+        delete :destroy, params: { id: availability.to_param }, session: valid_session
       }.to change(Availability, :count).by(-1)
     end
 
     it "redirects to the availabilities list" do
       availability = Availability.create! valid_attributes
-      delete :destroy, params: {id: availability.to_param}, session: valid_session
+      delete :destroy, params: { id: availability.to_param }, session: valid_session
       expect(response).to redirect_to(availabilities_url)
     end
   end
-
 end

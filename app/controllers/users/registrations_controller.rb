@@ -1,6 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   def availability
-
   end
 
   protected

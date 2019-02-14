@@ -1,25 +1,3 @@
-# README
+# TableTalk
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# ChatTo
+An app to match people up for coffee, tea and soon-to-be dinners! It's a great way for people to meet in the cities they live in.

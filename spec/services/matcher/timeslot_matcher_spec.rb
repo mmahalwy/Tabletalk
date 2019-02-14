@@ -17,7 +17,6 @@ RSpec.describe Matcher::TimeslotMatcher do
   let(:friday_9am) { create(:timeslot, day_of_week: 'Friday', time_of_day: '9 am', enabled: true) }
   let(:friday_2pm) { create(:timeslot, day_of_week: 'Friday', time_of_day: '2 pm', enabled: true) }
 
-
   describe "when all match" do
     let!(:availabity1) { create(:availability, user: user1, timeslot: friday_8am) }
     let!(:availabity2) { create(:availability, user: user2, timeslot: friday_8am) }

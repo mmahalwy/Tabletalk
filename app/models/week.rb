@@ -52,6 +52,7 @@ class Week < ApplicationRecord
 
   def week_difference_between_dates
     return if date_to - 1.week == date_from
+
     errors.add(:date_from, 'Must be a week difference')
     errors.add(:date_to, 'Must be a week difference')
   end

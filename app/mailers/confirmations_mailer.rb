@@ -1,5 +1,4 @@
 class ConfirmationsMailer < ApplicationMailer
-
   def confirm(user, week)
     @week = week
     @user = user

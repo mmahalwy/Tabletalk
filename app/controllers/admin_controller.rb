@@ -52,9 +52,9 @@ class AdminController < ApplicationController
 
   def set_week
     @week = Week.includes([
-      :user_meetings,
-      { confirmations: { user: [:timeslots, :city] } }
-    ]).find(params[:id])
+                            :user_meetings,
+                            { confirmations: { user: [:timeslots, :city] } }
+                          ]).find(params[:id])
   end
 
   def is_admin?

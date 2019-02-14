@@ -34,21 +34,21 @@ RSpec.describe Matcher::CityMatcher do
   describe "#timeslots_by_availabilities" do
     it "returns availabilities by timeslot" do
       expect(subject.timeslots_by_availabilities.keys).to match_array([
-        friday_9am.id,
-        friday_8am.id,
-        friday_2pm.id,
-      ])
+                                                                        friday_9am.id,
+                                                                        friday_8am.id,
+                                                                        friday_2pm.id,
+                                                                      ])
       expect(subject.timeslots_by_availabilities[friday_9am.id]).to match_array([
-        availabity1,
-        availabity2,
-        availabity4,
-      ])
+                                                                                  availabity1,
+                                                                                  availabity2,
+                                                                                  availabity4,
+                                                                                ])
       expect(subject.timeslots_by_availabilities[friday_8am.id]).to match_array([
-        availabity5,
-      ])
+                                                                                  availabity5,
+                                                                                ])
       expect(subject.timeslots_by_availabilities[friday_2pm.id]).to match_array([
-        availabity3,
-      ])
+                                                                                  availabity3,
+                                                                                ])
     end
   end
 end

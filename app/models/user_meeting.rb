@@ -52,19 +52,21 @@ class UserMeeting < ApplicationRecord
 
   validate :max_count, if: :meeting_id?
   # Should not allow for same timeslot for same week
-  validate :user_has_one_meeting_per_week, if: %i[ user_id? meeting_id?]
+  validate :user_has_one_meeting_per_week, if: %i[user_id? meeting_id?]
 
   delegate :timeslot, :timeslot_id, :week, :week_id, to: :meeting
 
   def max_count
     # Has to be `<` since record is not created yet!
     return if UserMeeting.where(meeting_id: meeting_id).count < Meeting::MAX_USERS
+
     errors.add(:user_id, 'Cannot add more users to this meeting!')
   end
 
   def user_has_one_meeting_per_week
     # TODO: this is different if multiple timeslots allowed.
     return if user.meetings.where(week_id: week_id).empty?
+
     errors.add(:user_id, 'User already has meeting this week')
   end
 end

@@ -60,7 +60,7 @@ module Matcher
     def create_meeting(availabilities)
       meeting = Meeting.create!(
         timeslot: availabilities.first.timeslot,
-        week: @week
+        week: @week,
       )
 
       availabilities.each do |availability|
@@ -69,7 +69,6 @@ module Matcher
       end
 
       meeting
-
     rescue => e
       Rails.logger.error "Matcher::TimeslotMatcher error=#{error.inspect}"
     end
