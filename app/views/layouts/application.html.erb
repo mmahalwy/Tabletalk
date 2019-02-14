@@ -1,134 +1,130 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>
-    <%= site_brand_name %>
-  </title>
-  <meta property="og:title" content="<%= site_brand_name %>">
-  <meta property="twitter:title" content="<%= site_brand_name %>">
-  <meta property="og:image" content="<%= site_home_image %>">
-  <meta property="twitter:image" content="<%= site_home_image %>">
-  <meta name="description" content="<%= site_description %>">
-  <meta property="og:description" content="<%= site_description %>">
-  <meta name="twitter:description" content="<%= site_description %>">
-  <meta name="keywords" content="coffee, business, professionals, linkedin">
-  <%= csrf_meta_tags %>
-
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+  <head>
+    <title>
+      <%= site_brand_name %>
+    </title>
+    <meta property="og:title" content="<%= site_brand_name %>">
+    <meta property="twitter:title" content="<%= site_brand_name %>">
+    <meta property="og:image" content="<%= site_home_image %>">
+    <meta property="twitter:image" content="<%= site_home_image %>">
+    <meta name="description" content="<%= site_description %>">
+    <meta property="og:description" content="<%= site_description %>">
+    <meta name="twitter:description" content="<%= site_description %>">
+    <meta name="keywords" content="coffee, business, professionals, linkedin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
     crossorigin="anonymous">
-</head>
-
-<body>
-  <% unless home_path? %>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+  </head>
+  <body>
+    <% unless home_path? %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <%= link_to site_brand_name, root_path, class: 'navbar-brand' %>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="nav navbar-nav mr-auto">
-          <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'Meetings', meetings_path, class: 'nav-link' %>
-          </li>
-          <% end %>
-        </ul>
-        <ul class="navbar-nav">
-          <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'Profile', edit_user_registration_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-          </li>
-          <% else %>
-          <li class="nav-item">
-            <%= link_to 'Signup', sign_up_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Signin', sign_in_path, class: "nav-link" %>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <% end %>
-  <div class="container">
-    <% if notice %>
-    <div class="alert alert-success" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <%= notice %>
-    </div>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <%= link_to site_brand_name, root_path, class: 'navbar-brand' %>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav mr-auto">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to 'Meetings', meetings_path, class: 'nav-link' %>
+                </li>
+              <% end %>
+            </ul>
+            <ul class="navbar-nav">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to 'Profile', edit_user_registration_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to 'Signup', sign_up_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'Signin', sign_in_path, class: "nav-link" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     <% end %>
-    <% if alert %>
-    <div class="alert alert-danger" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <%= alert %>
+    <div class="container">
+      <% if notice %>
+        <div class="alert alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= notice %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= alert %>
+        </div>
+      <% end %>
     </div>
+    <% if user_signed_in? %>
+      <% if current_user.city.nil? %>
+        <div class="container">
+          <div class="alert alert-warning" role="alert">
+            Uh oh! You need to select a city in.
+            <%= link_to "Add city", edit_user_registration_path %>
+          </div>
+        </div>
+      <% elsif !current_user.city.enabled? %>
+        <div class="container">
+          <div class="alert alert-warning" role="alert">
+            Hmm, seems like the city you choose is not yet available for meetings. Stay tuned!
+          </div>
+        </div>
+      <% elsif current_user.timeslots.empty? %>
+        <div class="container">
+          <div class="alert alert-warning" role="alert">
+            You haven't selected any available times to meet.
+            <%= link_to "Add availability", availabilities_path %>
+          </div>
+        </div>
+      <% else %>
+        <% unless current_user.approved? %>
+          <div class="container">
+            <div class="alert alert-warning" role="alert">
+              Hmm, seems like you are not approved just yet.
+              We approve users on a regular basis and will let you know right away!
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
-  </div>
-  <% if user_signed_in? %>
-  <% if current_user.city.nil? %>
-  <div class="container">
-    <div class="alert alert-warning" role="alert">
-      Uh oh! You need to select a city in.
-      <%= link_to "Add city", edit_user_registration_path %>
-    </div>
-  </div>
-  <% elsif !current_user.city.enabled? %>
-  <div class="container">
-    <div class="alert alert-warning" role="alert">
-      Hmm, seems like the city you choose is not yet available for meetings. Stay tuned!
-    </div>
-  </div>
-  <% elsif current_user.timeslots.empty? %>
-  <div class="container">
-    <div class="alert alert-warning" role="alert">
-      You haven't selected any available times to meet.
-      <%= link_to "Add availability", availabilities_path %>
-    </div>
-  </div>
-  <% else %>
-  <% unless current_user.approved? %>
-  <div class="container">
-    <div class="alert alert-warning" role="alert">
-      Hmm, seems like you are not approved just yet.
-      We approve users on a regular basis and will let you know right away!
-    </div>
-  </div>
-  <% end %>
-  <% end %>
-  <% end %>
-  <%= yield %>
-  <% if Rails.env.production? %>
-  <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-91215815-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <% end %>
-</body>
-
+    <%= yield %>
+    <% if Rails.env.production? %>
+      <script>
+        (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        
+        ga('create', 'UA-91215815-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+    <% end %>
+  </body>
 </html>
