@@ -3,33 +3,35 @@
     <div class="col-12">
       <h4><small>Meetings</small></h4>
       <% if @meetings.empty? %>
-      <p>There are no meetings for you yet. Until next week!</p>
+        <p>There are no meetings for you yet. Until next week!</p>
       <% else %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Meeting date</th>
-            <th>Participants</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @meetings.each do |meeting| %>
-          <tr>
-            <td>
-              <%= meeting.date.strftime("%B %d, %Y") %> at
-              <%= meeting.timeslot.time_of_day %>
-            </td>
-            <td>
-              <% meeting.users.each do |user| %>
-              <%= link_to user.email, user_path(user.id) %>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Meeting date</th>
+              <th>Participants</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @meetings.each do |meeting| %>
+              <tr>
+                <td>
+                  <%= meeting.date.strftime("%B %d, %Y") %> at
+                  <%= meeting.timeslot.time_of_day %>
+                </td>
+                <td>
+                  <% meeting.users.each do |user| %>
+                    <%= link_to user.email, user_path(user.id) %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to 'Cancel', cancel_meeting_path(meeting), method: :post, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       <% end %>
     </div>
   </div>

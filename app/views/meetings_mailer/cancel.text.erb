@@ -1,0 +1,2 @@
+Hey <%= @meeting.users.pluck(:first_name).join(' and ') %>!
+Unfortunately, <%= @user.first_name %> needs to cancel. We have not built out the functionality to match you with someone else but it's on our list!

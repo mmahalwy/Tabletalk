@@ -30,7 +30,11 @@ Rails.application.routes.draw do
   }
 
   resources :availabilities
-  resources :meetings, only: [:index]
+  resources :meetings, only: [:index] do
+    member do
+      post :cancel
+    end
+  end
   resources :users, only: [:show]
   resources :confirmations, only: [:show] do
     collection do

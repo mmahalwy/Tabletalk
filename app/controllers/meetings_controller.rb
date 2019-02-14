@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+  before_action :set_meeting, only: [:show, :edit, :update, :destroy, :cancel]
 
   # GET /meetings
   # GET /meetings.json
@@ -36,6 +36,12 @@ class MeetingsController < ApplicationController
         format.json { render json: @meeting.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # POST /meetings/1/cancel
+  # POST /meetings/1/cancel.json
+  def cancel
+    MeetingsMailer.cancel(@meeting, current_user).deliver_later
   end
 
   # PATCH/PUT /meetings/1

@@ -10,11 +10,11 @@
 <p>
   Below are the LinkedIn profiles of you two to help you learn a little more about each other before hand.
   <% @meeting.users.each do |user| %>
-  <br>
-  <%= user.first_name %> -
-  <a href="<%= user.profile %>">
-    <%= user.profile %>
-  </a>
+    <br>
+    <%= user.first_name %> -
+    <a href="<%= user.profile_url %>">
+      <%= user.profile_url %>
+    </a>
   <% end %>
 </p>
 <p>
