@@ -2,7 +2,7 @@
   <div class="site-wrapper-inner">
     <div class="masthead clearfix">
       <div class="container">
-        <div class="inner" style="padding: 2rem 1.5rem">
+        <div class="inner px-5 py-3">
           <h3 class="masthead-brand">
             <%= site_brand_name %>
           </h3>
@@ -20,9 +20,9 @@
     <div class="container text-center home-container">
       <div class="inner cover">
         <h1 class="mb-4">Meet business professionals, every week.</h1>
-        <h4 class="font-weight-light mb-4">
-          Receive an email every week for someone new to meet. Every week.
-        </h4>
+        <h5 class="font-weight-light mb-5">
+          We are building a community and want you to be part of it
+        </h5>
         <p class="lead">
           <%= link_to user_linkedin_omniauth_authorize_path, class: 'btn btn-primary btn-lg btn-linkedin' do %>
             <i class="fab fa-linkedin"></i> Connect with LinkedIn
@@ -58,10 +58,11 @@
     <div class="col-8 offset-2">
       <h2 class="text-center">FAQ</h2>
       <dl>
-        <dt class="mt-4 font-weight-bold">Why was this made?</dt>
+        <dt class="mt-4 font-weight-bold">Why did we build this?</dt>
         <dd>
-          We really enjoyed using Weave.in during it's time and met a couple of great folks.
-          We want to bring back the joy of meeting like-minded individuals every week.
+          Meeting new people is way harder than it should be.
+          We wanted to find a way to make it easier to meet people
+          and for the community to do the same.
         </dd>
         <dt class="mt-4 font-weight-bold">Who is this for?</dt>
         <dd>
@@ -69,15 +70,9 @@
           Whether that's for hiring, to meet a cofounder, to help others or expand your network, this is
           made for that.
         </dd>
-        <dt class="mt-4 font-weight-bold">How does this work?</dt>
-        <dd>
-          At the start of the week, you will receive an Email asking you to confirm meetings for that week.
-          Later on, we will match and send introductions to other individuals in the community to your inbox - look out
-          for them!
-        </dd>
         <dt class="mt-4 font-weight-bold">Where do we meet?</dt>
         <dd>
-          To begin with, this will be an ad hoc basis. We will let you and the other person decide where you'd like to
+          To begin with, this will be on an ad hoc basis. We will let you and the other person decide where you'd like to
           meet.
           What we will help with is coordinating the time between the attendees.
         </dd>

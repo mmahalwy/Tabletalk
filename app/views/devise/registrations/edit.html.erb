@@ -3,36 +3,33 @@
     <%= render 'shared/settings' %>
     <div class="col-md-6 text-left">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= f.error_notification %>
-
-      <div class="form-inputs">
-        <div class="form-group">
-          <label for="">Picture</label><br />
-          <img src="<%= f.object.image %>" class="rounded-circle" />
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <div class="form-inputs">
+          <div class="form-group">
+            <label for="">Picture</label><br />
+            <img src="<%= f.object.image %>" class="rounded-circle" />
+          </div>
+          <%= f.input :email, required: true, autofocus: true, placeholder: 'email@email.com' %>
+          <%= f.input :first_name, required: true, placeholder: 'John' %>
+          <%= f.input :last_name, required: true, placeholder: 'Doe' %>
+          <%= f.input :title, required: true, placeholder: 'Software engineer' %>
+          <%= f.input :description1, label: description1_content, placeholder: 'e.g. I am the creator of this and that app' %>
+          <%= f.input :description2, label: description2_content, placeholder: 'Meeting founders, investing, recruiting, etc' %>
+          <%= f.input :description3, label: description3_content, placeholder: 'Bitcoin' %>
+          <%= f.association :city, required: true, placeholder: 'San Francisco' %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for:
+              <%= resource.unconfirmed_email %>
+            </p>
+          <% end %>
+          <%#= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+          <%#= f.input :password_confirmation, required: false %>
+          <%#= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
         </div>
-        <%= f.input :email, required: true, autofocus: true, placeholder: 'email@email.com' %>
-        <%= f.input :first_name, required: true, placeholder: 'John' %>
-        <%= f.input :last_name, required: true, placeholder: 'Doe' %>
-        <%= f.input :title, required: true, placeholder: 'Software engineer' %>
-        <%= f.input :description1, label: description1_content, placeholder: 'e.g. I am the creator of this and that app' %>
-        <%= f.input :description2, label: description2_content, placeholder: 'Meeting founders, investing, recruiting, etc' %>
-        <%= f.input :description3, label: description3_content, placeholder: 'Bitcoin' %>
-        <%= f.association :city, required: true, placeholder: 'San Francisco' %>
-
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for:
-          <%= resource.unconfirmed_email %>
-        </p>
-        <% end %>
-
-        <%#= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-        <%#= f.input :password_confirmation, required: false %>
-        <%#= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-      </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Update", class: 'btn btn-primary btn-block' %>
-      </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Update", class: 'btn btn-primary btn-block' %>
+        </div>
       <% end %>
       <hr>
       <p>Unhappy?

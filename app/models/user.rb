@@ -59,6 +59,8 @@ class User < ApplicationRecord
   after_create :generate_email_token
   after_update :send_approved_email
 
+  accepts_nested_attributes_for :confirmations
+
   scope :approved, -> { where(approved: true) }
   scope :has_city, -> { where.not(city_id: nil) }
 

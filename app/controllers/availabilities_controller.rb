@@ -7,6 +7,8 @@ class AvailabilitiesController < ApplicationController
   def index
     @timeslots = Timeslot.all.group_by(&:day_of_week)
     @availabilities = current_user.availabilities
+
+    set_confirmation
   end
 
   # GET /availabilities/1
@@ -68,6 +70,18 @@ class AvailabilitiesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_availability
     @availability = Availability.find(params[:id])
+  end
+
+  def set_confirmation
+    if params.key?(:week_id) && params[:week_id].present?
+      @week = Week.find_by(id: params[:week_id])
+
+      if @week.present?
+        @confirmation = current_user.confirmations.find_or_initialize_by(
+          week_id: params[:week_id],
+        )
+      end
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

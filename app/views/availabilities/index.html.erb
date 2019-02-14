@@ -5,15 +5,21 @@
       <p>We use this information to try and pick convenient times and locations for your meetings.</p>
       <%= simple_form_for(current_user, url: registration_path(:user), html: { class: 'row' }) do |f| %>
         <% @timeslots.each do |day, values| %>
-            <div class="col-md-6">
+          <div class="col-md-6">
             <div class="lead mb-3">
               <strong><%= day %></strong>
             </div>
             <%= f.association :timeslots, as: :check_boxes, collection: values, label: false, label_method: :time_of_day, include_blank: false %>
           </div>
         <% end %>
+        <% if @confirmation.present? %>
+          <%= f.simple_fields_for :confirmations do |c| %>
+            <%= c.hidden_field :id, value: @confirmation.id %>
+            <%= c.hidden_field :week_id, value: @confirmation.week_id %>
+          <% end %>
+        <% end %>
         <div class="col-md-12">
-          <%= f.submit 'Update', class: 'btn btn-primary btn-block' %>
+          <%= f.submit @confirmation.present? ? 'Update and confirm this week' : 'Update', class: 'btn btn-primary btn-block' %>
         </div>
       <% end %>
     </div>

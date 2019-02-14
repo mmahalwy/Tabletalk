@@ -24,4 +24,6 @@ class Confirmation < ApplicationRecord
   belongs_to :user
 
   scope :current, -> { order(:week_id).last }
+
+  validates_uniqueness_of :week_id, scope: :user_id, message: 'You are already confirmed for this week'
 end

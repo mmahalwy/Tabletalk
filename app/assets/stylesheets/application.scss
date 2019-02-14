@@ -81,12 +81,10 @@ abbr[title='required'] {
 
 /* Padding for spacing */
 
-.inner {
-  padding: 2rem;
-}
-
 .home-container {
-  padding-top: 15vh;
+  @media(min-width: map-get($map: $grid-breakpoints, $key: 'md')) {
+    padding-top: 15vh;
+  }
 }
 
 /*
@@ -137,9 +135,6 @@ abbr[title='required'] {
  * Cover
  */
 
-.cover {
-  padding: 0 1.5rem;
-}
 
 .cover .btn-lg {
   padding: 0.75rem 1.25rem;
