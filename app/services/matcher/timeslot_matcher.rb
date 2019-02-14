@@ -70,7 +70,7 @@ module Matcher
 
       meeting
     rescue => e
-      Rails.logger.error "Matcher::TimeslotMatcher error=#{error.inspect}"
+      Rails.logger.error "[Matcher::TimeslotMatcher] error=#{error.inspect}"
     end
   end
 end

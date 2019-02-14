@@ -18,7 +18,6 @@ RSpec.describe ConfirmationsController, type: :routing do
       expect(:get => "/confirmations/1/edit").to route_to("confirmations#edit", :id => "1")
     end
 
-
     it "routes to #create" do
       expect(:post => "/confirmations").to route_to("confirmations#create")
     end

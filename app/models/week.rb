@@ -42,7 +42,7 @@ class Week < ApplicationRecord
 
     User.send_confirmation_emails(week)
   rescue
-    Rails.logger.error 'Trying to create an already existed week'
+    Rails.logger.error '[Week] Trying to create an already existed week'
   end
 
   def dates_are_sunday

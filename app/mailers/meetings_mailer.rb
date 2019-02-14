@@ -3,7 +3,7 @@ class MeetingsMailer < ApplicationMailer
     @meeting = meeting
     emails = meeting.users.pluck(:email)
 
-    Rails.logger.error "#{meeting.id} does not have emails" if emails.empty?
+    Rails.logger.error "[MeetingsMailer] #{meeting.id} does not have emails" if emails.empty?
 
     # TODO: Should be branded
     # TODO: Should have locations
@@ -14,7 +14,7 @@ class MeetingsMailer < ApplicationMailer
     @meeting = meeting
     emails = meeting.users.pluck(:email)
 
-    Rails.logger.error "#{meeting.id} does not have emails" if emails.empty?
+    Rails.logger.error "[MeetingsMailer] #{meeting.id} does not have emails" if emails.empty?
 
     # TODO: Should be branded
     # TODO: Should have locations
@@ -27,7 +27,7 @@ class MeetingsMailer < ApplicationMailer
     @user = user
     emails = meeting.users.pluck(:email)
 
-    Rails.logger.error "#{meeting.id} does not have emails" if emails.empty?
+    Rails.logger.error "[MeetingsMailer] #{meeting.id} does not have emails" if emails.empty?
 
     mail to: emails,
          subject: 'Someone needs to cancel this meeting'

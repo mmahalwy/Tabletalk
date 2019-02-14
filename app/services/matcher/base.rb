@@ -24,7 +24,7 @@ module Matcher
         timeslot_matcher.perform
       end
     rescue => e
-      Rails.logger.error "Matcher::Base: error=#{e.inspect}"
+      Rails.logger.error "[Matcher::Base]: error=#{e.inspect}"
     end
   end
 end

@@ -57,6 +57,7 @@ class User < ApplicationRecord
   has_many :meetings, through: :user_meetings
 
   after_create :generate_email_token
+  after_create :alert_slack
   after_update :send_approved_email
 
   accepts_nested_attributes_for :confirmations
@@ -74,6 +75,10 @@ class User < ApplicationRecord
     return false unless meetings.exists?
 
     meetings.where(id: user2.meetings).exists?
+  end
+
+  def alert_slack
+    Slack.new_user(self)
   end
 
   def generate_email_token
