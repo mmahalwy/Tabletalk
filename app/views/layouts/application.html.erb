@@ -30,11 +30,6 @@
           <%= link_to site_brand_name, root_path, class: 'navbar-brand' %>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav mr-auto">
-              <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to 'Meetings', meetings_path, class: 'nav-link' %>
-                </li>
-              <% end %>
             </ul>
             <ul class="navbar-nav">
               <% if user_signed_in? %>
@@ -49,7 +44,7 @@
                   <%= link_to 'Signup', sign_up_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'Signin', sign_in_path, class: "nav-link" %>
+                  <%= link_to 'Login', sign_in_path, class: "nav-link" %>
                 </li>
               <% end %>
             </ul>
@@ -106,6 +101,10 @@
           </div>
         <% end %>
       <% end %>
+    <% end %>
+    <% if user_signed_in? %>
+      <div class="mt-md-5 mt-0">
+      </div>
     <% end %>
     <%= yield %>
     <% if Rails.env.production? %>

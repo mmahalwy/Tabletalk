@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 offset-3">
+    <div class="col-md-6 offset-md-3">
       <h4><small>Sign in</small></h4>
       <%= link_to user_linkedin_omniauth_authorize_path, class: 'btn btn-primary btn-block btn-linkedin' do %>
         <i class="fab fa-linkedin"></i> Sign in with LinkedIn
@@ -12,7 +12,6 @@
           <%= f.input :password, required: false %>
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
-
         <div class="form-actions">
           <%= f.button :submit, 'Sign in', class: 'btn btn-primary' %>
           <%= render "devise/shared/links" %>

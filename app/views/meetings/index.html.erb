@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <h4><small>Meetings</small></h4>
+    <%= render 'shared/settings' %>
+    <div class="col-md-9">
       <% if @meetings.empty? %>
         <p>There are no meetings for you yet. Until next week!</p>
       <% else %>

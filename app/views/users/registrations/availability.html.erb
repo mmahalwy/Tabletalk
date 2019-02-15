@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="row mt-5">
+  <div class="row">
     <%= render 'settings/shared' %>
-    <div class="col-md-6 text-left">
+    <div class="col-md-6 text-left mt-5 mt-md-0">
       <%= simple_form_for(current_user, url: registration_path(:user), html: { class: 'row' }) do |f| %>
         <% @timeslots.each do |day, values| %>
-            <div class="col-md-6">
+          <div class="col-md-6">
             <div class="lead">
               <%= day %>
             </div>

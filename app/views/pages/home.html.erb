@@ -11,7 +11,7 @@
               <%= link_to 'Profile', edit_user_registration_path, class: "nav-link" %>
             <% else %>
               <%= link_to 'Signup', sign_up_path, class: "nav-link" %>
-              <%= link_to 'Signin', sign_in_path, class: "nav-link" %>
+              <%= link_to 'Login', sign_in_path, class: "nav-link" %>
             <% end %>
           </nav>
         </div>
@@ -21,7 +21,7 @@
       <div class="inner cover">
         <h1 class="mb-4">Meet business professionals, every week.</h1>
         <h5 class="font-weight-light mb-5">
-          We are building a community and want you to be part of it
+          Join a community of entrepreneurs, engineers, designers and product people
         </h5>
         <p class="lead">
           <%= link_to user_linkedin_omniauth_authorize_path, class: 'btn btn-primary btn-lg btn-linkedin' do %>
@@ -68,7 +68,7 @@
         <dd>
           If you're looking to meet and connect with new people, this is for you.
           Whether that's for hiring, to meet a cofounder, to help others or expand your network, this is
-          made for that.
+          made for that. We will ask you for your interests to best match you with similar minded folks.
         </dd>
         <dt class="mt-4 font-weight-bold">Where do we meet?</dt>
         <dd>
