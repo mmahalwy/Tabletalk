@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>
-      <%= site_brand_name %>
-    </title>
-    <meta property="og:title" content="<%= site_brand_name %>">
-    <meta property="twitter:title" content="<%= site_brand_name %>">
-    <meta property="og:image" content="<%= site_home_image %>">
-    <meta property="twitter:image" content="<%= site_home_image %>">
-    <meta name="description" content="<%= site_description %>">
-    <meta property="og:description" content="<%= site_description %>">
-    <meta name="twitter:description" content="<%= site_description %>">
-    <meta name="keywords" content="coffee, business, professionals, linkedin">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= display_meta_tags(default_meta_tags) %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
