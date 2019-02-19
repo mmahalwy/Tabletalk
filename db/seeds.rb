@@ -5,10 +5,12 @@
   { country: 'USA', state: 'Texas', name: 'Houston' },
   { country: 'USA', state: 'California', name: 'San Francisco', enabled: true },
   { country: 'USA', state: 'California', name: 'San Jose' },
+  { country: 'USA', state: 'California', name: 'Palo Alto' },
   { country: 'USA', state: 'Washington', name: 'Seattle' },
   { country: 'USA', state: 'Massachusetts', name: 'Boston' },
+  { country: 'UK', state: '', name: 'London' },
   { country: 'Canada', state: 'Ontario', name: 'Toronto' },
-  { country: 'Canada', state: 'British Columbia', name: 'Vancouver' }
+  { country: 'Canada', state: 'British Columbia', name: 'Vancouver' },
 ].each do |city_data|
   City.create!(city_data)
 end
