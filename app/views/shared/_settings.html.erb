@@ -2,6 +2,7 @@
   <nav class="nav nav-pills flex-column">
     <%= link_to 'Meetings', meetings_path, class: "nav-link #{active_class(meetings_path)}" %>
     <%= link_to 'Profile', edit_user_registration_path, class: "nav-link #{active_class(edit_user_registration_path)}" %>
+    <%= link_to 'About me', user_about_me_path, class: "nav-link #{active_class(user_about_me_path)}" %>
     <%= link_to 'Availability', availabilities_path, class: "nav-link #{active_class(availabilities_path)}" %>
   </nav>
 </div>

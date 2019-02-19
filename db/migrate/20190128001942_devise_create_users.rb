@@ -21,12 +21,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :approved, null: false, default: false
       t.integer :city_id
       t.integer :role, null: false, default: 0
-      # What are you working on
-      t.text :description1, null: false, default: ''
-      # What have you done
-      t.text :description2, null: false, default: ''
-      # What are you itnerested in
-      t.text :description3, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token

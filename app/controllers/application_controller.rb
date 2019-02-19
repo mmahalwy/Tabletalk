@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
         :city_id,
         timeslot_ids: [],
         confirmations_attributes: [:id, :week_id],
+        user_descriptions_attributes: [:id, :type, :content],
       )
     end
   end

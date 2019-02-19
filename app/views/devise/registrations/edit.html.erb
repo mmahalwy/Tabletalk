@@ -2,6 +2,8 @@
   <div class="row">
     <%= render 'shared/settings' %>
     <div class="col-md-6 text-left mt-5 mt-md-0">
+      <h3>Just the basic profile stuff</h3>
+      <p class="text-muted">Make sure you keep this tip top!</p>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -14,9 +16,6 @@
           <%= f.input :first_name, required: true, placeholder: 'John' %>
           <%= f.input :last_name, required: true, placeholder: 'Doe' %>
           <%= f.input :title, required: true, placeholder: 'Software engineer' %>
-          <%= f.input :description1, label: description1_content, placeholder: 'e.g. I am the creator of this and that app' %>
-          <%= f.input :description2, label: description2_content, placeholder: 'Meeting founders, investing, recruiting, etc' %>
-          <%= f.input :description3, label: description3_content, placeholder: 'Bitcoin' %>
           <%= f.association :city, required: true, placeholder: 'San Francisco' %>
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for:
@@ -28,7 +27,7 @@
           <%#= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
         </div>
         <div class="form-actions">
-          <%= f.button :submit, "Update", class: 'btn btn-primary btn-block' %>
+          <%= f.button :submit, "Update", class: 'btn btn-primary' %>
         </div>
       <% end %>
       <hr>

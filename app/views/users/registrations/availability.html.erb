@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <%= render 'settings/shared' %>
+    <%= render 'shared/settings' %>
     <div class="col-md-6 text-left mt-5 mt-md-0">
       <%= simple_form_for(current_user, url: registration_path(:user), html: { class: 'row' }) do |f| %>
         <% @timeslots.each do |day, values| %>
@@ -19,7 +19,7 @@
           </div>
         <% end %>
         <div class="col-md-12">
-          <%= f.submit 'Update', class: 'btn btn-primary btn-block' %>
+          <%= f.submit 'Update', class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div>

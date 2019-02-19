@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     get '/sign_up' => 'devise/registrations#new', as: 'sign_up'
     get '/users/availability' => 'users/registrations#availability',
         as: 'user_availability'
+    get '/users/about_me' => 'users/registrations#about_me',
+        as: 'user_about_me'
   end
 
   devise_for :users, controllers: {

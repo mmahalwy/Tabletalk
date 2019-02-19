@@ -8,7 +8,7 @@ module Matcher
     end
 
     def perform
-      City.enabled.all.each do |city|
+      City.enabled.each do |city|
         match_for_city(city)
       end
     end

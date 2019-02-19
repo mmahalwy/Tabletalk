@@ -18,6 +18,7 @@ module Slack
   end
 
   def self.call(body)
+    return if Rails.env.development?
     post(Rails.application.credentials.slack_webhook, { body: format_body(body) })
   end
 end

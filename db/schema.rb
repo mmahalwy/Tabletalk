@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_12_042449) do
+ActiveRecord::Schema.define(version: 2019_02_15_051326) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -98,6 +99,16 @@ ActiveRecord::Schema.define(version: 2019_02_12_042449) do
     t.index ["time_of_day"], name: "index_timeslots_on_time_of_day"
   end
 
+  create_table "user_descriptions", force: :cascade do |t|
+    t.integer "type"
+    t.string "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_user_descriptions_on_type"
+    t.index ["user_id"], name: "index_user_descriptions_on_user_id"
+  end
+
   create_table "user_meetings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "meeting_id"
@@ -127,9 +138,6 @@ ActiveRecord::Schema.define(version: 2019_02_12_042449) do
     t.boolean "approved", default: false, null: false
     t.integer "city_id"
     t.integer "role", default: 0, null: false
-    t.text "description1", default: "", null: false
-    t.text "description2", default: "", null: false
-    t.text "description3", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -162,6 +170,7 @@ ActiveRecord::Schema.define(version: 2019_02_12_042449) do
   add_foreign_key "locations", "cities"
   add_foreign_key "meetings", "timeslots"
   add_foreign_key "meetings", "weeks"
+  add_foreign_key "user_descriptions", "users"
   add_foreign_key "user_meetings", "meetings"
   add_foreign_key "user_meetings", "users"
 end

@@ -20,4 +20,6 @@ class City < ApplicationRecord
   has_many :users
 
   scope :enabled, -> { where(enabled: true) }
+
+  validates_uniqueness_of :name, scope: :state
 end

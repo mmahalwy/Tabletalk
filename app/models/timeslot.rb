@@ -20,7 +20,9 @@ class Timeslot < ApplicationRecord
   has_many :availabilities
   has_many :users, through: :availabilities
 
-  default_scope { where(enabled: true) }
+  scope :enabled, -> { where(enabled: true) }
+
+  validates_uniqueness_of :time_of_day, scope: :day_of_week
 
   def text
     "#{day_of_week} #{time_of_day}"

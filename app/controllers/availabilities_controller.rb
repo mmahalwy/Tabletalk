@@ -5,7 +5,7 @@ class AvailabilitiesController < ApplicationController
   # GET /availabilities
   # GET /availabilities.json
   def index
-    @timeslots = Timeslot.all.group_by(&:day_of_week)
+    @timeslots = Timeslot.enabled.group_by(&:day_of_week)
     @availabilities = current_user.availabilities
 
     set_confirmation

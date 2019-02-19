@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <%= render 'shared/settings' %>
+    <div class="col-md-6 text-left mt-5 mt-md-0">
+      <h3>Tell us about you</h3>
+      <p class="text-muted">Give us some information about yourself that we can share with others</p>
+      <%= simple_form_for(current_user, url: registration_path(:user), html: { class: 'row' }) do |f| %>
+        <%= f.simple_fields_for :user_descriptions do |ud| %>
+          <div class="col-md-12">
+            <%= ud.hidden_field :type, value: ud.object.type %>
+            <%= ud.hidden_field :id, value: ud.object.id %>
+            <%= ud.input :content,
+                placeholder: UserDescription::TYPES_INPUTS[ud.object.type][:placeholder],
+                label: UserDescription::TYPES_INPUTS[ud.object.type][:label],
+                as: :text
+            %>
+          </div>
+        <% end %>
+        <div class="col-md-12">
+          <%= f.submit 'Update', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
