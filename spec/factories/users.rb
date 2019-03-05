@@ -6,6 +6,9 @@
 #  approved               :boolean          default(FALSE), not null
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet
+#  description1           :text             default(""), not null
+#  description2           :text             default(""), not null
+#  description3           :text             default(""), not null
 #  email                  :string           default(""), not null
 #  email_token            :string           default(""), not null
 #  encrypted_password     :string           default(""), not null

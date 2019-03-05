@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_15_051326) do
+ActiveRecord::Schema.define(version: 2019_03_05_050108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,31 @@ ActiveRecord::Schema.define(version: 2019_02_15_051326) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+  create_table "taggings", id: :serial, force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+  end
+
+  create_table "tags", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   create_table "timeslots", force: :cascade do |t|
     t.string "day_of_week"
     t.string "time_of_day"
@@ -97,16 +122,6 @@ ActiveRecord::Schema.define(version: 2019_02_15_051326) do
     t.index ["day_of_week"], name: "index_timeslots_on_day_of_week"
     t.index ["enabled"], name: "index_timeslots_on_enabled"
     t.index ["time_of_day"], name: "index_timeslots_on_time_of_day"
-  end
-
-  create_table "user_descriptions", force: :cascade do |t|
-    t.integer "type"
-    t.string "content"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["type"], name: "index_user_descriptions_on_type"
-    t.index ["user_id"], name: "index_user_descriptions_on_user_id"
   end
 
   create_table "user_meetings", force: :cascade do |t|
@@ -129,6 +144,9 @@ ActiveRecord::Schema.define(version: 2019_02_15_051326) do
     t.string "last_name", default: "", null: false
     t.string "image", default: "", null: false
     t.string "title", default: "", null: false
+    t.text "description1", default: "", null: false
+    t.text "description2", default: "", null: false
+    t.text "description3", default: "", null: false
     t.json "location", default: "", null: false
     t.string "profile_url", default: "", null: false
     t.string "location_name", default: "", null: false
@@ -170,7 +188,6 @@ ActiveRecord::Schema.define(version: 2019_02_15_051326) do
   add_foreign_key "locations", "cities"
   add_foreign_key "meetings", "timeslots"
   add_foreign_key "meetings", "weeks"
-  add_foreign_key "user_descriptions", "users"
   add_foreign_key "user_meetings", "meetings"
   add_foreign_key "user_meetings", "users"
 end

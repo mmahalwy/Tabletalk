@@ -6,6 +6,9 @@
 #  approved               :boolean          default(FALSE), not null
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet
+#  description1           :text             default(""), not null
+#  description2           :text             default(""), not null
+#  description3           :text             default(""), not null
 #  email                  :string           default(""), not null
 #  email_token            :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -40,6 +43,7 @@
 #
 
 class User < ApplicationRecord
+  include UserTaggable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -51,7 +55,6 @@ class User < ApplicationRecord
   has_many :timeslots, through: :availabilities
   has_many :confirmations
   has_many :user_meetings
-  has_many :user_descriptions
   has_many :meetings, through: :user_meetings
 
   after_create :generate_email_token
@@ -59,7 +62,8 @@ class User < ApplicationRecord
   after_update :send_approved_email
 
   accepts_nested_attributes_for :confirmations
-  accepts_nested_attributes_for :user_descriptions
+
+  acts_as_taggable_on :interested_in_meeting
 
   scope :approved, -> { where(approved: true) }
   scope :has_city, -> { where.not(city_id: nil) }

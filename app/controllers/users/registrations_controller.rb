@@ -1,13 +1,10 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :authenticate_user!, only: [:about_me, :availability]
+
   def availability
   end
 
   def about_me
-    UserDescription::TYPES_INPUTS.each do |type, input|
-      current_user.user_descriptions.first_or_initialize(type: type)
-    end
-
-    @user_descriptions = current_user.user_descriptions.enabled
   end
 
   protected

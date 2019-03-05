@@ -5,18 +5,9 @@
       <h3>Tell us about you</h3>
       <p class="text-muted">Give us some information about yourself that we can share with others</p>
       <%= simple_form_for(current_user, url: registration_path(:user), html: { class: 'row' }) do |f| %>
-        <%= f.simple_fields_for :user_descriptions do |ud| %>
-          <div class="col-md-12">
-            <%= ud.hidden_field :type, value: ud.object.type %>
-            <%= ud.hidden_field :id, value: ud.object.id %>
-            <%= ud.input :content,
-                placeholder: UserDescription::TYPES_INPUTS[ud.object.type][:placeholder],
-                label: UserDescription::TYPES_INPUTS[ud.object.type][:label],
-                as: :text
-            %>
-          </div>
-        <% end %>
         <div class="col-md-12">
+          <%= f.input :description1, label: description1[:label], placeholder: description1[:placeholder] %>
+          <%= f.input :interested_in_meeting_list, collection: User::INTERESTED_IN_MEETING.values, label_method: lambda { |v| User::INTERESTED_IN_MEETING_LABELS[v] }, as: :check_boxes, include_blank: false %>
           <%= f.submit 'Update', class: 'btn btn-primary' %>
         </div>
       <% end %>

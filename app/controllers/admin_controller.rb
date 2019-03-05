@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   before_action :authenticate_user!
   before_action :is_admin?
   before_action :set_user, only: [:approve]
-  before_action :set_week, only: %i[week meetings]
+  before_action :set_week, only: [:week, :meetings]
 
   def users
     @users = User.includes(:city).accessible_by(current_ability)
@@ -53,7 +53,7 @@ class AdminController < ApplicationController
   def set_week
     @week = Week.includes([
       :user_meetings,
-      { confirmations: { user: [:timeslots, :city] } }
+      { confirmations: { user: [:timeslots, :city] } },
     ]).find(params[:id])
   end
 

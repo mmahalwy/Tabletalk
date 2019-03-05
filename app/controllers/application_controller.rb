@@ -12,9 +12,10 @@ class ApplicationController < ActionController::Base
         :last_name,
         :description,
         :city_id,
+        :description1,
+        interested_in_meeting_list: [],
         timeslot_ids: [],
         confirmations_attributes: [:id, :week_id],
-        user_descriptions_attributes: [:id, :type, :content],
       )
     end
   end
